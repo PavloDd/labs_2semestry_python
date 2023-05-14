@@ -1,4 +1,7 @@
 class Fridge:
+    """
+    First laboratory class in Python programming language
+    """
     instance = None
 
     def __init__(self, brand="Bosch", model="CC11", capacity_in_liters=15, is_defrosing=False,
