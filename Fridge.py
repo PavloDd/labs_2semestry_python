@@ -2,7 +2,7 @@ class Fridge:
     """
     First laboratory class in Python programming language
     """
-    instance = None
+    __instance = None
 
     def __init__(self, brand="Bosch", model="CC11", capacity_in_liters=15, is_defrosing=False,
                  energy_efficiency_class='A'):
@@ -21,11 +21,11 @@ class Fridge:
     def delete_model_info(self):
         self.__model = None
 
-    @staticmethod
-    def get_instance():
-        if not Fridge.instance:
-            Fridge.instance = Fridge()
-        return Fridge.instance
+    @classmethod
+    def get_instance(cls):
+        if not cls.__instance:
+            cls.__instance = Fridge()
+        return cls.__instance
 
     def __str__(self):
         return f"Fridge(brand={self.__brand}, model={self.__model}, capacity_in_liters={self.__capacity_in_liters}," \
