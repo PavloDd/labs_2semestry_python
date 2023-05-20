@@ -1,4 +1,7 @@
-class Fridge:
+from abc import ABC, abstractmethod
+
+
+class Fridge(ABC):
     """
     First laboratory class in Python programming language
     """
@@ -21,6 +24,18 @@ class Fridge:
     def delete_model_info(self):
         self.__model = None
 
+    @property
+    def brand(self):
+        return self.__brand
+
+    @property
+    def energy_efficiency_class(self):
+        return self.__energy_efficiency_class
+
+    @abstractmethod
+    def get_max_usable_capacity(self):
+        pass
+
     @classmethod
     def get_instance(cls):
         if not cls.__instance:
@@ -28,5 +43,5 @@ class Fridge:
         return cls.__instance
 
     def __str__(self):
-        return f"Fridge(brand={self.__brand}, model={self.__model}, capacity_in_liters={self.__capacity_in_liters}," \
-               f" is_defrosing={self.__is_defrosing}, energy_efficiency_class={self.__energy_efficiency_class})"
+        return f"brand={self.__brand}, model={self.__model}, capacity_in_liters={self.__capacity_in_liters}," \
+               f" is_defrosing={self.__is_defrosing}, energy_efficiency_class={self.__energy_efficiency_class}"
