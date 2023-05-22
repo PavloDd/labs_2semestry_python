@@ -1,3 +1,6 @@
+"""
+Imported classes to make the program work properly
+"""
 from models.FridgeCamera import FridgeCamera
 from models.WineFridge import WineFridge
 from manager.FridgeManager import FridgeManager

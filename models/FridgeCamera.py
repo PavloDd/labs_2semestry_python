@@ -1,3 +1,6 @@
+"""
+Imported parent class
+"""
 from .Fridge import Fridge
 
 
@@ -10,6 +13,9 @@ class FridgeCamera(Fridge):
     def __init__(self, brand="bosch", model="CC11", capacity_in_liters=15, is_defrosing=False,
                  energy_efficiency_class='A', number_of_entrances=1, type_of_tape_drive="mechanic",
                  max_tape_speed_in_meters_per_sec=2, max_weight_tape_can_withstand=90):
+        """
+        Constructor for FridgeCamera objects, with super().constructor from class Fridge
+        """
         super().__init__(brand, model, capacity_in_liters, is_defrosing, energy_efficiency_class)
         self.number_of_entrances = number_of_entrances
         self.type_of_tape_drive = type_of_tape_drive
@@ -17,6 +23,9 @@ class FridgeCamera(Fridge):
         self.max_weight_tape_can_withstand = max_weight_tape_can_withstand
 
     def get_max_usable_capacity(self):
+        """
+        Override method from abstract class Fridge, that returns max usable capacity of fridge in liters
+        """
         return self.max_weight_tape_can_withstand / self.__VOLUME_PER_KILOGRAM
 
     def __str__(self):
