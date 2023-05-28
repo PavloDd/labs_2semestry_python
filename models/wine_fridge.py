@@ -1,7 +1,7 @@
 """
 Imported parent class
 """
-from .Fridge import Fridge
+from .fridge import Fridge
 
 
 class WineFridge(Fridge):
@@ -17,6 +17,7 @@ class WineFridge(Fridge):
         super().__init__(brand, model, capacity_in_liters, is_defrosing, energy_efficiency_class)
         self.capacity_in_number_of_liters = capacity_in_number_of_liters
         self.max_volume_of_bottle_in_liters = max_volume_of_bottle_in_liters
+        self.color_available = {"light red", "dark grey", "dark red"}
 
     def get_max_usable_capacity(self):
         """

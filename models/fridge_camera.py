@@ -1,7 +1,7 @@
 """
 Imported parent class
 """
-from .Fridge import Fridge
+from .fridge import Fridge
 
 
 class FridgeCamera(Fridge):
@@ -21,6 +21,7 @@ class FridgeCamera(Fridge):
         self.type_of_tape_drive = type_of_tape_drive
         self.max_tape_speed_in_meters_per_sec = max_tape_speed_in_meters_per_sec
         self.max_weight_tape_can_withstand = max_weight_tape_can_withstand
+        self.color_available = {"white", "black", "grey"}
 
     def get_max_usable_capacity(self):
         """
