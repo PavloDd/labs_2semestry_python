@@ -1,6 +1,10 @@
 from abc import ABC, abstractmethod
 
 
+class FridgeException(Exception):
+    pass
+
+
 class Fridge(ABC):
     """
     Abstract class Fridge from the second lab
@@ -70,6 +74,16 @@ class Fridge(ABC):
         if not cls.__instance:
             cls.__instance = Fridge()
         return cls.__instance
+
+    def turn_on_defrosing(self):
+        if self.is_defrosing.__eq__(True):
+            raise FridgeException("Fridge is already defrosing!")
+        self.is_defrosing = True
+
+    def turn_off_defrosing(self):
+        if self.is_defrosing.__eq__(False):
+            raise FridgeException("The fridge defrost was already turned off")
+        self.is_defrosing = False
 
     def __str__(self):
         """

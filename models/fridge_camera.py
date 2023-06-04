@@ -4,6 +4,10 @@ Imported parent class
 from .fridge import Fridge
 
 
+class FridgeCameraException(Exception):
+    pass
+
+
 class FridgeCamera(Fridge):
     """
     Class FridgeCamera from second lab
@@ -27,7 +31,10 @@ class FridgeCamera(Fridge):
         """
         Override method from abstract class Fridge, that returns max usable capacity of fridge in liters
         """
-        return self.max_weight_tape_can_withstand / self.__VOLUME_PER_KILOGRAM
+        capacity = self.max_weight_tape_can_withstand / self.__VOLUME_PER_KILOGRAM
+        if capacity.__eq__(0):
+            raise FridgeCameraException("This fridge camera has no useful capacity. Try another one!")
+        return capacity
 
     def __str__(self):
         return f"FridgeCamera({super().__str__()}, number_of_entrances={self.number_of_entrances}," \

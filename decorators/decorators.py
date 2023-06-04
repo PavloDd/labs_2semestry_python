@@ -1,4 +1,34 @@
 from functools import wraps
+import logging
+import os
+
+
+def logged(exception, mode):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            try:
+                return func(*args, **kwargs)
+            except exception as e:
+                log_file = 'exception.log'
+                if os.path.exists(log_file):
+                    os.remove(log_file)
+
+                logger = logging.getLogger("exception_logger")
+                logger.setLevel(logging.INFO)
+                handler = None
+
+                if mode.__eq__("console"):
+                    handler = logging.StreamHandler()
+
+                if mode.__eq__("file"):
+                    handler = logging.FileHandler("exception.log")
+
+                if handler:
+                    logger.addHandler(handler)
+                    logger.exception('Exception occurred: %s', str(e))
+                    logger.removeHandler(handler)
+        return wrapper
+    return decorator
 
 
 def count_args(func):

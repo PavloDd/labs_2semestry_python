@@ -4,6 +4,10 @@ Imported parent class
 from .fridge import Fridge
 
 
+class WineFridgeException(Exception):
+    pass
+
+
 class WineFridge(Fridge):
     """
     Class WineFridge from second lab
@@ -23,7 +27,9 @@ class WineFridge(Fridge):
         """
         Override method from abstract class Fridge, which returns max usable capacity of fridge in liters
         """
-        return self.capacity_in_number_of_liters * self.max_volume_of_bottle_in_liters
+        capacity = self.capacity_in_number_of_liters * self.max_volume_of_bottle_in_liters
+        if capacity.__eq__(0):
+            raise WineFridgeException("This Wine Fridge has no useful capacity. Try another one!")
 
     def __str__(self):
         return f"WineFridge({super().__str__()}, capacity_in_number_of_liters={self.capacity_in_number_of_liters}," \

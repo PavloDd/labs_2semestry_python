@@ -61,7 +61,6 @@ class SetManager:
             for color_available in fridge.color_available:
                 unic_items_set.add(fridge)
 
-
     @count_args
     def __getitem__(self, index):
         """
