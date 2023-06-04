@@ -55,6 +55,13 @@ class SetManager:
         self.index += 1
         return self.manager[self.index].color_available
 
+    def unic_items(self):
+        unic_items_set = set()
+        for fridge in self.manager:
+            for color_available in fridge.color_available:
+                unic_items_set.add(fridge)
+
+
     @count_args
     def __getitem__(self, index):
         """
