@@ -49,3 +49,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+    list_of_numbers = (1, 2, 3)
+    list_of_strings = ("ndkl", "jwenfdjw", "wnfw")
+    zipped_list = zip(list_of_numbers, list_of_strings)
+
+    for i in z
+

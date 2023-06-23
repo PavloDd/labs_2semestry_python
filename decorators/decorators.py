@@ -9,9 +9,9 @@ def logged(exception, mode):
             try:
                 return func(*args, **kwargs)
             except exception as e:
-                log_file = 'exception.log'
-                if os.path.exists(log_file):
-                    os.remove(log_file)
+                # log_file = 'exception.log'
+                # if os.path.exists(log_file):
+                #     os.remove(log_file)
 
                 logger = logging.getLogger("exception_logger")
                 logger.setLevel(logging.INFO)
@@ -20,8 +20,9 @@ def logged(exception, mode):
                 if mode.__eq__("console"):
                     handler = logging.StreamHandler()
 
-                if mode.__eq__("file"):
+                elif mode == "file":
                     handler = logging.FileHandler("exception.log")
+                    logging.basicConfig(filename="exception.log", filemode='w')
 
                 if handler:
                     logger.addHandler(handler)
